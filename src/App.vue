@@ -9,11 +9,10 @@
           ☰
         </button>
         <!-- Full Menu for Desktop and Expanded Menu for Mobile -->
-        <nav :class="menuClasses">
-            <router-link to="/" class="text-lg font-semibold py-2 md:py-0">Home</router-link>
-            <router-link to="/login" class="text-lg font-semibold py-2 md:py-0">Login</router-link>
-            <!-- Added padding to the bottom for mobile view -->
-            <router-link to="/user-profile" class="text-lg font-semibold py-2 md:py-0 pb-4 md:pb-0">Profile</router-link>
+        <nav :class="menuClasses" v-click-outside="closeMenu">
+            <router-link to="/" class="nav-link text-lg font-semibold py-2 md:py-0">Home</router-link>
+            <router-link to="/login" class="nav-link text-lg font-semibold py-2 md:py-0">Login</router-link>
+            <router-link to="/user-profile" class="nav-link text-lg font-semibold py-2 md:py-0 pb-4 md:pb-0">Profile</router-link>
         </nav>
       </div>
       <!-- Page Content -->
@@ -21,7 +20,7 @@
         <router-view></router-view>
       </div>
     </div>
-  </template>
+</template>
 
 <script>
 export default {
@@ -34,7 +33,7 @@ export default {
   computed: {
     menuClasses() {
       return [
-        'absolute gap-x-4 top-full left-0 w-full bg-neutral-900 md:static md:flex md:flex-row md:justify-center md:items-center',
+        'absolute gap-x-8 top-full left-0 w-full bg-neutral-900 md:static md:flex md:flex-row md:justify-center md:items-center',
         'flex flex-col text-center transition-height duration-500 ease-in-out',
         this.isMenuOpen ? 'max-h-screen' : 'max-h-0', // Control max height for slide effect
         'overflow-hidden md:overflow-visible', // Prevent overflow during transition
@@ -43,8 +42,14 @@ export default {
     }
   },
   methods: {
-    toggleMenu() {
+    toggleMenu(event) {
+      event.stopPropagation(); // Prevent the click event from reaching the document
       this.isMenuOpen = !this.isMenuOpen;
+    },
+    closeMenu() {
+      if (this.isMenuOpen) {
+        this.isMenuOpen = false;
+      }
     },
   },
 };
@@ -52,4 +57,16 @@ export default {
 
 <style>
 /* ... existing styles ... */
+
+/* Custom styling for navigation links */
+.nav-link {
+  @apply transition-opacity duration-300 ease-in-out;
+  opacity: 0.75; /* Slightly faded for inactive links */
+}
+
+/* Styling for active links */
+.router-link-active, .router-link-exact-active {
+  @apply font-bold;
+  opacity: 1; /* Fully opaque for active link */
+}
 </style>
