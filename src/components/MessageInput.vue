@@ -1,6 +1,11 @@
 <template>
     <div class="fixed inset-x-0 bottom-0 p-4 bg-white shadow">
-      <div class="flex items-center gap-0 mx-auto">
+      <div class="flex items-center gap-0 mx-auto relative">
+        <!-- Character Limit Flag (Centered above input) -->
+        <div v-if="messageText.length >= 500" class="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 p-2 bg-red-500 text-white text-m rounded-lg shadow-lg whitespace-nowrap">
+          Maximum character limit reached.
+        </div>
+  
         <button @click="toggleEmojiPicker" class="emoji-button text-lg py-2 px-3 rounded-l-lg bg-white border border-r-0 border-gray-300">😊</button>
         <div class="relative">
           <div v-if="isEmojiPickerVisible" class="absolute bottom-10 left-0 z-10">
@@ -13,16 +18,17 @@
           placeholder="Type a message..." 
           v-model="messageText" 
           @keyup.enter="sendMessage"
+          :maxlength="500"
         />
       </div>
     </div>
-</template>
-
-<script>
-import 'emoji-picker-element';
-
-export default {
-  name: 'MessageInput',
+  </template>
+  
+  <script>
+  import 'emoji-picker-element';
+  
+  export default {
+    name: 'MessageInput',
     data() {
       return {
         messageText: '',

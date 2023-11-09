@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center gap-2 mb-2">
+    <div class="message-container flex items-center gap-2 mb-2">
       <!-- Increase the size of the timestamp -->
       <span class="text-base text-gray-500">{{ message.timestamp }}</span>
       <!-- Increase the size of the message text -->
@@ -18,3 +18,20 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-25%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.message-container {
+  animation: 0.3s ease-out 0s 1 slideInFromLeft;
+}
+</style>
