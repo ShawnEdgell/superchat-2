@@ -1,24 +1,11 @@
-# superchat-clone
+# SuperChat
 
-## Project setup
-```
-npm install
-```
+SuperChat is a Vue.js-based web application that offers a streamlined chat experience. This project is designed with a focus on mobile-first design principles, ensuring a responsive and intuitive user interface. Users can enjoy real-time messaging, along with features like emoji support and user profiles.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Features
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- Real-time chat functionality
+- User authentication (Login/Profile management)
+- Emoji picker for enhanced messaging
+- Responsive design for optimal mobile experience
+- User profile customization

@@ -1,7 +1,7 @@
 <template>
     <div class="fixed inset-x-0 bottom-0 p-4 bg-white shadow">
       <div class="flex items-center gap-0 mx-auto">
-        <button @click="toggleEmojiPicker" class="emoji-button text-lg p-2 rounded-l-lg bg-white border border-r-0 border-gray-300">😊</button>
+        <button @click="toggleEmojiPicker" class="emoji-button text-lg py-2 px-3 rounded-l-lg bg-white border border-r-0 border-gray-300">😊</button>
         <div class="relative">
           <div v-if="isEmojiPickerVisible" class="absolute bottom-10 left-0 z-10">
             <emoji-picker @emoji-click="insertEmoji"></emoji-picker>
