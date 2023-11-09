@@ -1,28 +1,21 @@
 <template>
-    <div class="user-profile p-4">
-      <h1 class="text-2xl font-bold mb-4">User Profile</h1>
-      <!-- User profile form or information will go here -->
-      <form>
-        <!-- Add form fields for user information -->
+    <div class="flex flex-col items-center justify-center h-full p-4">
+      <h1 class="text-4xl font-bold mb-6">Profile</h1>
+      <form class="w-full max-w-xs">
+        <!-- Form elements here -->
+        <p class="flex justify-center">Profile page content...</p>
+        <!-- Add your form fields and submit button -->
       </form>
     </div>
   </template>
   
   <script>
   export default {
-    name: 'UserProfile',
-    data() {
-      return {
-        // User data and other properties
-      };
-    },
-    methods: {
-      // Methods for handling form submission, data fetching, etc.
-    }
+    name: 'UserLogin'
   }
   </script>
   
   <style scoped>
-  /* Styles specific to UserProfile view */
+  /* Add styles specific to Login view if needed */
   </style>
   

@@ -3,7 +3,7 @@
     <h1 class="text-4xl font-bold mb-6">Login</h1>
     <form class="w-full max-w-xs">
       <!-- Form elements here -->
-      <p>Login page content...</p>
+      <p class="flex justify-center">Login page content...</p>
       <!-- Add your form fields and submit button -->
     </form>
   </div>
