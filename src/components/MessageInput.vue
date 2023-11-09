@@ -1,26 +1,28 @@
 <template>
     <div class="fixed inset-x-0 bottom-0 p-4 bg-white shadow">
-      <div class="flex items-center gap-2 mx-auto">
-        <button @click="toggleEmojiPicker" class="emoji-button">😊</button>
-        <div v-if="isEmojiPickerVisible" class="relative">
-          <emoji-picker @emoji-click="insertEmoji" class="absolute bottom-full left-0 z-10"></emoji-picker>
+      <div class="flex items-center gap-0 mx-auto">
+        <button @click="toggleEmojiPicker" class="emoji-button text-lg p-2 rounded-l-lg bg-white border border-r-0 border-gray-300">😊</button>
+        <div class="relative">
+          <div v-if="isEmojiPickerVisible" class="absolute bottom-10 left-0 z-10">
+            <emoji-picker @emoji-click="insertEmoji"></emoji-picker>
+          </div>
         </div>
         <input 
           type="text" 
-          class="flex-1 border p-2" 
+          class="flex-1 border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 rounded-r-lg p-2 text-lg" 
           placeholder="Type a message..." 
           v-model="messageText" 
           @keyup.enter="sendMessage"
         />
       </div>
     </div>
-  </template>
-  
-  <script>
-  import 'emoji-picker-element';
-  
-  export default {
-    name: 'MessageInput',
+</template>
+
+<script>
+import 'emoji-picker-element';
+
+export default {
+  name: 'MessageInput',
     data() {
       return {
         messageText: '',

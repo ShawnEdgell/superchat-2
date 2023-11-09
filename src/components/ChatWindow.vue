@@ -25,15 +25,15 @@
       this.scrollToBottom();
     },
     methods: {
-      scrollToBottom() {
+    scrollToBottom() {
         this.$nextTick(() => {
-          const lastMessageElement = this.$refs.lastMessage;
-          if (lastMessageElement.length > 0) {
+        const lastMessageElement = this.$refs.lastMessage;
+        if (lastMessageElement && lastMessageElement.length > 0) {
             const lastElement = lastMessageElement[lastMessageElement.length - 1].$el;
             lastElement.scrollIntoView({ behavior: 'smooth' });
-          }
+        }
         });
-      }
+    }
     },
     mounted() {
       this.scrollToBottom(); // Also scroll to bottom when the component is first mounted
