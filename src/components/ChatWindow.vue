@@ -1,10 +1,9 @@
 <template>
-    <div class="flex-1 p-4 pb-9  overflow-y-auto" ref="chatWindow">
+    <div class="flex-1 p-4 pb-9 overflow-y-auto" ref="chatWindow">
       <ChatMessage 
         v-for="message in allMessages" 
         :key="message.id" 
-        :message="message" 
-        ref="lastMessage"
+        :message="message"
       />
     </div>
   </template>
@@ -18,25 +17,39 @@
     components: {
       ChatMessage
     },
+    data() {
+      return {
+        initialLoad: true, // Flag to check if it's the initial load
+      };
+    },
     computed: {
       ...mapGetters(['allMessages'])
     },
-    updated() {
-      this.scrollToBottom();
-    },
     methods: {
-    scrollToBottom() {
+      scrollToBottom() {
         this.$nextTick(() => {
-        const lastMessageElement = this.$refs.lastMessage;
-        if (lastMessageElement && lastMessageElement.length > 0) {
-            const lastElement = lastMessageElement[lastMessageElement.length - 1].$el;
-            lastElement.scrollIntoView({ behavior: 'smooth' });
-        }
+          const chatWindowElement = this.$refs.chatWindow;
+          if (chatWindowElement) {
+            if (this.initialLoad) {
+              // If it's the initial load, jump directly to the bottom
+              chatWindowElement.scrollTop = chatWindowElement.scrollHeight;
+              this.initialLoad = false; // Reset the flag after initial load
+            } else {
+              // For subsequent updates, use smooth scrolling
+              const lastElement = chatWindowElement.lastElementChild;
+              if (lastElement) {
+                lastElement.scrollIntoView({ behavior: 'smooth' });
+              }
+            }
+          }
         });
-    }
+      }
     },
     mounted() {
-      this.scrollToBottom(); // Also scroll to bottom when the component is first mounted
+      this.scrollToBottom();
+    },
+    updated() {
+      this.scrollToBottom();
     }
   }
   </script>

@@ -69,4 +69,5 @@ export default {
   @apply font-bold;
   opacity: 1; /* Fully opaque for active link */
 }
+
 </style>
