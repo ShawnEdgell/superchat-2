@@ -19,12 +19,17 @@ const routes = [
     name: 'UserProfile',
     component: UserProfile
   },
-  // other routes...
+  // Add a redirect for any undefined routes to the home page
+  {
+    path: '/:catchAll(.*)', // This will catch any undefined paths
+    redirect: '/' // Redirect to the home page
+  }
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes
-});
+    history: createWebHistory('/superchat-2/'), // Update the base URL
+    routes
+  });
+  
 
 export default router;
