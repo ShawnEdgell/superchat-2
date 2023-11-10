@@ -1,13 +1,16 @@
 {
-  "compilerOptions": {
-    "allowJs": true,
-    "target": "es5",
-    "module": "esnext",
-    "baseUrl": "./",
-    "moduleResolution": "node",
-    "paths": {
-      "@/*": ["src/*"]
+    "compilerOptions": {
+      "target": "esnext",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["src/*"]
+      },
+      "jsx": "preserve",
+      "allowSyntheticDefaultImports": true
     },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+    "include": ["src/**/*.js", "src/**/*.vue"],
+    "exclude": ["node_modules"]
   }
-}
+  

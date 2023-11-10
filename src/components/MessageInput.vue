@@ -30,50 +30,52 @@
   </template>
   
   <script>
-  import 'emoji-picker-element';
-  
-  export default {
-    name: 'MessageInput',
-    data() {
-      return {
-        messageText: '',
-        isEmojiPickerVisible: false,
-        maxMessageLength: 500,
-      };
+import 'emoji-picker-element';
+import { useChatStore } from '../stores/chatStore'; // Adjust the import path as needed
+
+export default {
+  name: 'MessageInput',
+  data() {
+    return {
+      messageText: '',
+      isEmojiPickerVisible: false,
+      maxMessageLength: 500,
+    };
+  },
+  computed: {
+    isLimitReached() {
+      return this.messageText.length >= this.maxMessageLength;
+    }
+  },
+  methods: {
+    toggleEmojiPicker() {
+      this.isEmojiPickerVisible = !this.isEmojiPickerVisible;
+      this.manageClickOutsideListener();
     },
-    computed: {
-      isLimitReached() {
-        return this.messageText.length >= this.maxMessageLength;
+    manageClickOutsideListener() {
+      const action = this.isEmojiPickerVisible ? 'addEventListener' : 'removeEventListener';
+      document[action]('click', this.handleClickOutside, true);
+    },
+    handleClickOutside(event) {
+      if (!this.$el.contains(event.target)) {
+        this.isEmojiPickerVisible = false;
+        document.removeEventListener('click', this.handleClickOutside, true);
       }
     },
-    methods: {
-      toggleEmojiPicker() {
-        this.isEmojiPickerVisible = !this.isEmojiPickerVisible;
-        this.manageClickOutsideListener();
-      },
-      manageClickOutsideListener() {
-        const action = this.isEmojiPickerVisible ? 'addEventListener' : 'removeEventListener';
-        document[action]('click', this.handleClickOutside, true);
-      },
-      handleClickOutside(event) {
-        if (!this.$el.contains(event.target)) {
-          this.isEmojiPickerVisible = false;
-          document.removeEventListener('click', this.handleClickOutside, true);
-        }
-      },
-      insertEmoji(event) {
-        this.messageText += event.detail.unicode;
-        this.toggleEmojiPicker();
-      },
-      sendMessage() {
-        if (this.messageText.trim()) {
-          this.$store.dispatch('addMessage', { text: this.messageText });
-          this.messageText = '';
-        }
+    insertEmoji(event) {
+      this.messageText += event.detail.unicode;
+      this.toggleEmojiPicker();
+    },
+    sendMessage() {
+      if (this.messageText.trim()) {
+        const chatStore = useChatStore();
+        chatStore.addMessage({ text: this.messageText });
+        this.messageText = '';
       }
     }
   }
-  </script>
+}
+</script>
   
   <style scoped>
   /* No additional styles needed */
