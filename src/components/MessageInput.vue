@@ -20,7 +20,7 @@
         <input 
           type="text" 
           class="flex-1 border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 rounded-r-lg p-2 text-lg" 
-          placeholder="Type a message..." 
+          placeholder="Say something..." 
           v-model="messageText" 
           @keyup.enter="sendMessage"
           :maxlength="maxMessageLength"

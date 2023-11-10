@@ -1,0 +1,56 @@
+.hamburger {
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    display: flex;
+    align-items: center; /* Align vertically with the logo */
+  }
+  
+  .hamburger-box {
+    width: 30px;
+    height: 24px; /* Adjusted height for better alignment */
+    display: inline-block;
+    position: relative;
+  }
+  
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    background-color: #fff;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    transition: all 0.3s linear;
+    display: block;
+  }
+  
+  .hamburger-inner {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .hamburger-inner::before {
+    content: "";
+    top: -10px; /* Adjusted for even spacing */
+  }
+  
+  .hamburger-inner::after {
+    content: "";
+    bottom: -10px; /* Adjusted for even spacing */
+  }
+  
+  /* Hamburger to X Transition */
+  .hamburger.open .hamburger-inner {
+    transform: translateY(-50%) rotate(45deg);
+  }
+  
+  .hamburger.open .hamburger-inner::before {
+    top: 0;
+    opacity: 0;
+  }
+  
+  .hamburger.open .hamburger-inner::after {
+    bottom: 0;
+    transform: rotate(-90deg);
+  }
+  
