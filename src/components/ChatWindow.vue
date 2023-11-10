@@ -8,6 +8,7 @@
     </div>
   </template>
   
+  
   <script>
   import ChatMessage from './ChatMessage.vue';
   import { mapGetters } from 'vuex';

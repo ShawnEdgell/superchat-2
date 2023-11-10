@@ -1,9 +1,10 @@
 <template>
-    <div :class="['message-container flex items-center gap-2 mb-2', { 'animate': shouldAnimate }]">
-      <span class="text-base text-gray-500">{{ message.timestamp }}</span>
-      <p class="flex-1 text-lg">{{ message.text }}</p>
+    <div :class="['flex items-start gap-2 mb-2', shouldAnimate ? 'animate-slide-in' : '']">
+      <span class="flex-none text-base text-gray-500 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[100px] self-center">{{ message.timestamp }}</span>
+      <p class="flex-1 text-lg break-words min-w-0 self-center">{{ message.text }}</p>
     </div>
   </template>
+  
   
   <script>
   export default {
@@ -20,26 +21,26 @@
       };
     },
     mounted() {
-      // Only animate if it's not part of the initial load
       this.shouldAnimate = !this.$parent.initialLoad;
     }
   }
   </script>
   
   <style scoped>
-  @keyframes slideInFromLeft {
-    0% {
-      transform: translateX(-25%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-25%);
+    opacity: 0;
   }
-  
-  .message-container.animate {
-    animation: 0.3s ease-out 0s 1 slideInFromLeft;
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
-  </style>
+}
+
+.animate-slide-in {
+  animation: slideInFromLeft 0.3s ease-out;
+}
+</style>
+
   
