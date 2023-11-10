@@ -8,6 +8,7 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
+  base: '/superchat-2/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
