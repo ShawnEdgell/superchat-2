@@ -1,5 +1,7 @@
 # GhostChat 👻💬
 
+https://shawnedgell.github.io/superchat-2/
+
 ## Overview
 Welcome to GhostChat, the ultimate destination for modern communication. Designed to cater to both casual and professional conversations, GhostChat offers a sleek interface paired with advanced functionality, making it an ideal choice for a diverse range of chatting needs. From spontaneous discussions with friends to formal collaborations in a professional setting, GhostChat provides a versatile and enjoyable experience.
 
