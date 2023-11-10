@@ -14,9 +14,9 @@
         </button>
         <!-- Full Menu for Desktop and Expanded Menu for Mobile -->
         <nav :class="menuClasses" v-click-outside="closeMenu">
-            <router-link to="/" class="nav-link text-lg font-semibold py-2 md:py-0">Home</router-link>
-            <router-link to="/login" class="nav-link text-lg font-semibold py-2 md:py-0">Login</router-link>
-            <router-link to="/user-profile" class="nav-link text-lg font-semibold py-2 md:py-0 pb-4 md:pb-0">Profile</router-link>
+            <router-link to="/" class="nav-link text-xl font-semibold py-2 md:py-0">Home</router-link>
+            <router-link to="/login" class="nav-link text-xl font-semibold py-2 md:py-0">Login</router-link>
+            <router-link to="/user-profile" class="nav-link text-xl font-semibold py-2 md:py-0 pb-4 md:pb-0">Profile</router-link>
         </nav>
       </div>
       <!-- Page Content -->
