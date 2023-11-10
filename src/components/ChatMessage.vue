@@ -1,7 +1,7 @@
 <template>
     <div :class="['flex items-start gap-2 mb-2', shouldAnimate ? 'animate-slide-in' : '']">
-      <span class="flex-none text-base text-gray-500 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[100px] self-center">{{ message.timestamp }}</span>
-      <p class="flex-1 text-lg break-words min-w-0 self-center">{{ message.text }}</p>
+      <span class="flex-none text-lg text-gray-500 whitespace-nowrap overflow-hidden overflow-ellipsis max-w-[100px] self-center">{{ message.timestamp }}</span>
+      <p class="flex-1 text-xl break-words min-w-0 self-center">{{ message.text }}</p>
     </div>
   </template>
   
